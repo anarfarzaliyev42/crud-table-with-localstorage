@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+    
+}
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
+}
+.crud-table{
+    margin-top: 50px;
+
+}
+.add-user-search{
+    margin-top: 35px;
+}
+
+
+.glyphicon-plus:before {
+    content: "\002b";
+}
+.valid-email{
+    display: none;
+}
+.alert-danger{
+    display: none;
+}
+.alert-danger-active{
+    display: block;
+}
+.add-user-header{
+    display: none;
+}
+.edit-user-header{
+    display: none;
+}
+.valid-salary{
+display: none;
+}
+.salary-greater-than{
+    display: none;
+}
+.add-edit-table{
+    display: none;
+    margin-bottom: 33px;
+}
+.header-none{
+    display: none;
+}
+.header-block{
+    display: block;
+}
+.add-save-change{
+    display: none;
+   float: left;
+}
+.edit-save-change{
+    display: none;
+    float: left;
+}
+.cancel{
+    margin-left: 15px;
+}

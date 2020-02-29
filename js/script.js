@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
     GetAllUsersList();
+    let allRowsLength2=$('tbody tr').length;
+  
   //Salary sum written here
     let salarySum=0;
     let allRowstd1=$('tbody tr td');
@@ -320,7 +322,9 @@ $(document).ready(function () {
   // Add user input danger validations end
   // Delete button
   $(document).on('click', 'tr .delete-button', function () {
-    
+    if(allRowsLength2==2||allRowsLength2==1){
+      localStorage.removeItem("users");
+    }
     let allInputs7 = $(".add-edit-table .form-group input");
     allInputs7.each(function (index) {
       $(this).val('');
@@ -347,6 +351,17 @@ $(document).ready(function () {
     $(".ng-binding").closest('tr').each(function () {
       $(this).toggle($(this).text().toLowerCase().indexOf(inputValue) > -1);
     });
+    
+    let sum=0;
+      let allSalary=$('.salary');
+     
+      
+      allSalary.each(function () {
+        if($(this).is(':visible')){
+          sum+=Number($(this).text());
+        }
+      })
+      $('.result').text(sum); 
   });
 
   $(document).on('click', '.cancel', function () {
@@ -363,20 +378,19 @@ $(document).ready(function () {
 
   let obj = {};
   let allRows=$('tbody tr');
-
+  
   allRows.each(function (index) {
 
 
     if(!$(this).hasClass('total-row')){
     
-
- 
       let user = {
         Name: $(this).children('td').eq(0).text(),
         Country: $(this).children('td').eq(1).text(),
         Salary: $(this).children('td').eq(2).text(),
         Email: $(this).children('td').eq(3).text()
     }
+
     
   if (obj[`user-${index}`] == undefined) {
     obj[`user-${index}`] = [];
@@ -388,15 +402,12 @@ $(document).ready(function () {
       let sum=0;
       let allSalary=$('.salary');
       allSalary.each(function () {
-        console.log($(this));
+    
         
         sum+=Number($(this).text());
       })
       $('.result').text(sum);   
     }
-    
-
-  
   
   })
 
@@ -414,9 +425,7 @@ for (const key in obj) {
   
   
   if (obj.hasOwnProperty(key)) {
-      const element = obj[key];
-    
-        
+      const element = obj[key];    
       element.forEach(e => {
          newTrTag2=$(`<tr>
         <td class='ng-binding'>${e.Name}</td>
